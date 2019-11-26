@@ -1,0 +1,15 @@
+.task-wrapper {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.list-wrapper {
+    width: 100%;
+}
+.list-wrapper div {
+    display: flex;
+}
+.list-wrapper div .list-item {
+    border-bottom: 1px solid #e2e2e2;
+}
