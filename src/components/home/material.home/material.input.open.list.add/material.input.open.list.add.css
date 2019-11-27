@@ -1,0 +1,17 @@
+.form-list-add-wrap {
+    width: 100%;
+    display: flex;
+}
+.form {
+    width: 100% !important;
+}
+.form-list-add {
+    width: 100%;
+}
+.wrap-button-done {
+    padding-top:50px;
+}
+.button-done {
+    margin: 0;
+    padding: 0 !important;
+}

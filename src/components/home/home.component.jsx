@@ -10,10 +10,10 @@ export default class HomeComponent extends React.Component {
         return(
             <div>
                 <p className="p-name">Today</p>
+                <OpenListComponent/>
                 <SimpleList />
                 <AddButton />
                 <CardsComponent />
-                <OpenListComponent/>
             </div>
         )
     }

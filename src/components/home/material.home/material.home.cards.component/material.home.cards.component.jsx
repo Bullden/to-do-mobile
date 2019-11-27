@@ -30,6 +30,7 @@ export default function CardsComponent() {
         background: color
       },
   ]
+  
   return (
       <div>
           {arrayOfCards.map((item) =>(

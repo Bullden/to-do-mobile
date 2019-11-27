@@ -5,9 +5,12 @@ import AddIcon from '@material-ui/icons/Add';
 import Popover from '@material-ui/core/Popover';
 import SpellcheckIcon from '@material-ui/icons/Spellcheck';
 import ViewListIcon from '@material-ui/icons/ViewList';
+import { connect } from "react-redux";
+import {openTask} from "../../../../redux/home/actions"
+import {openList} from "../../../../redux/home/actions"
 
 
-export default function AddButton() {
+export function AddButton(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -18,10 +21,22 @@ export default function AddButton() {
     setAnchorEl(null);
   };
   const openTask = () => {
-    console.log('open task');   
+    const {openTask} = props
+    
+    openTask({
+      openTask: true
+    })
+    console.log(props.openTask);  
+    setAnchorEl(null);
   }
   const openList = () => {
-    console.log('open list');
+    const {openList} = props
+    
+    openList({
+      openList: true,
+    })
+    console.log(props.openList);  
+    setAnchorEl(null);
     
   }
   const open = Boolean(anchorEl);
@@ -62,3 +77,10 @@ export default function AddButton() {
     </div>
   );
 }
+const mapStateToProps = function(state) {
+  return{
+    openTask: state.homePage.openTask,
+    openList: state.homePage.openList
+  }
+}
+export default connect(mapStateToProps,{openTask,openList})(AddButton)

@@ -2,9 +2,7 @@
     position: fixed !important;
     bottom: 50px;
     right: 25px;
-}
-.popup-wrap {
-    
+    z-index: 2;
 }
 .typo-task {
     border-bottom:1px solid #e2e2e2 ;
