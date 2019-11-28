@@ -1,0 +1,25 @@
+.buttons-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.input-task-wrap {
+    padding: 20px;
+}
+.wrap-cal-sel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    border-top: 1px solid #e2e2e2;
+}
+.MuiGrid-container {
+    width: 50% !important;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.select-wrap {
+    margin-top: 24px;
+}
+.wrap-add-task {
+    padding: 5px 10px 5px 10px;
+}

@@ -8,6 +8,9 @@ import ViewListIcon from '@material-ui/icons/ViewList';
 import { connect } from "react-redux";
 import {openTask} from "../../../../redux/home/actions"
 import {openList} from "../../../../redux/home/actions"
+import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 
 
 export function AddButton(props) {
@@ -63,17 +66,18 @@ export function AddButton(props) {
         }}
       >
         <div className='popup-wrap'>
-          <div className ='typo-task typo' onClick={openTask}>
-            <div><SpellcheckIcon/></div>
-            <div>Task</div>
-          </div>
+          <Link to ='/add-task' className='link'>
+            <div className ='typo-task typo' onClick={openTask}>
+              <div><SpellcheckIcon/></div>
+              <div>Task</div>
+            </div>
+          </Link>
           <div className='typo' onClick ={openList}>
             <div><ViewListIcon/></div>
             <div>List</div>
           </div>
         </div>
       </Popover>
-
     </div>
   );
 }

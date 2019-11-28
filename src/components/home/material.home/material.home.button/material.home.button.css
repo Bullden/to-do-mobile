@@ -14,3 +14,7 @@
 .typo :first-child {
     padding-right: 5px;
 }
+.link {
+    text-decoration: none;
+    color: inherit;
+}

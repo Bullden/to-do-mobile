@@ -14,7 +14,7 @@ export class InputForAddLists extends React.Component {
         console.log(this.state.nameList);   
         const {addList} = this.props
         addList({
-            addList: this.state.nameList
+            nameList: this.state.nameList
         }) 
     }
     render() {
