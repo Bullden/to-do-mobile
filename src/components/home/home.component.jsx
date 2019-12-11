@@ -5,13 +5,22 @@ import AddButton from './material.home/material.home.button/material.home.button
 import CardsComponent from './material.home/material.home.cards.component/material.home.cards.component';
 import OpenListComponent from './material.home/material.home.open.list/material.home.open.list';
 import { Link } from '@material-ui/core';
+import { connect } from "react-redux";
+import { doInitToDo } from "../../redux/home/actions"
+import { OpenTaskComponent } from './material.home/material.home.open.tasks/material.home.open.tasks';
+import  EditList  from './material.home/material.home.edit.list/material.home.edit.list';
 
-export default class HomeComponent extends React.Component {
+export class HomeComponent extends React.Component {
+    componentDidMount() {
+        const {doInitToDo} = this.props
+        doInitToDo({}) 
+    }
     render(){
         return(
             <div>
                 <p className="p-name">Today</p>
                 <OpenListComponent/>
+                <EditList />
                 <SimpleList />
                 <AddButton />
                 <CardsComponent />
@@ -19,3 +28,7 @@ export default class HomeComponent extends React.Component {
         )
     }
 }
+const mapStateToProps = function (state) {
+    return {}
+}
+export default connect(mapStateToProps, { doInitToDo })(HomeComponent)

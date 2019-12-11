@@ -19,7 +19,15 @@
 }
 .select-wrap {
     margin-top: 24px;
+    display: flex;
 }
 .wrap-add-task {
     padding: 5px 10px 5px 10px;
+}
+.color-select-list {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 5px;
 }

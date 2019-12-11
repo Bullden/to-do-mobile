@@ -1,0 +1,32 @@
+ .name-tasks-wrap {
+    display: flex;
+    padding-top: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+
+ }
+ .content-wrap {
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-top: 30px;
+ }
+ .name-list-for-task {
+    font-size: 35px;
+    padding-bottom: 5px;
+}
+.count-taskss {
+    opacity: 0.8;
+    padding-bottom: 30px;
+}
+.wrap-name-edit {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
+}
+.edit-icon {
+    padding-top: 8px;
+}
+.check-icon {
+    padding-top: 8px;
+}

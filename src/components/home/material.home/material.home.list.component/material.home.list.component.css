@@ -13,3 +13,18 @@
 .list-wrapper div .list-item {
     border-bottom: 1px solid #e2e2e2;
 }
+.wrap-name-task-id {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.wrap-color-list {
+    width: 10px;
+    height: 10px;
+    padding-top: 12px;
+}
+.color-list {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}

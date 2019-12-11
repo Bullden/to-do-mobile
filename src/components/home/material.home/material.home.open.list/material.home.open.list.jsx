@@ -11,21 +11,18 @@ export class OpenListComponent extends React.Component {
     }
     
     closeList =() => {
-        console.log(1111);
-        console.log(this.props);
+
         
         this.setState({ className:'slideDown'}) 
         const {openList} = this.props
         setTimeout(() => openList({openList: false}),1000) 
-        setTimeout(() =>this.setState({className:'slideUp'}),1100)   
+        setTimeout(() => this.setState({className:'slideUp'}),1100)   
     }
     render() {
 
         
-        console.log(this.state.className);
-        
         const open = this.props.openListt
-        return ( open ?
+        return ( open  ?
             <div id ="anim-block" className ={this.state.className}>
                 <div className='wrap-close-btn'>
                     <div onClick ={() => this.closeList()} className="close-btn"></div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addTask } from "../../../../redux/home/actions"
+import { showLists, addTask , getList, postTask} from "../../../../redux/home/actions"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import './material.home.open.tasks.css'
@@ -13,51 +13,75 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 import { Link } from 'react-router-dom';
+import ShowLists from '../material.home.show.lists/material.home.show.lists';
 
 
 
 
 export class OpenTaskComponent extends React.Component {
-   
+
     state = {
         nameTask: '',
-        selectedDate:'',
-        setSelectedDate:''
+        selectedDate: '',
+        setSelectedDate: ''
     }
-    cancelTask =() => {
-        console.log('cancel');     
+    cancelTask = () => {
+        console.log('cancel');
     }
     addtask = () => {
-        console.log('done', this.state.selectedDate, this.state.nameTask);
+        console.log(this.state.selectedDate);
         
+        const { addTask } = this.props
+        addTask({
+            nameTask: this.state.nameTask,
+            date: this.state.selectedDate,
+            list: this.props.selectList,
+            countList: 1
+        })
+        // const arrayToPost = this.props.addTaskk.slice(-1)[0]
+        // const {postTask} = this.props
+        // postTask({
+        //     arrayToPost
+        // })
     }
     handle = (event) => this.setState({ nameTask: event.target.value });
     handleDateChange = event => {
-        console.log(event);
         // console.log(this.state.setSelectedDate);
-        
+
         this.setState({
             selectedDate: event
         });
     };
-    componentDidMount () {
-        console.log(this.props);
-        console.log('list fo list',this.props.addList);
-        console.log('list fo listxcvc',this.props.openListt);
+    showLists = () => {
+        const { showLists } = this.props
+        showLists({
+            showLists: true
+        })
+
+    }
+    componentDidMount() {
+        const {getList} = this.props
+        getList({})
     }
     render() {
-        
-        
+
+        // if(this.props.selectList === {} || undefined) {
+        //     list = 'Select list'
+        // } else {
+        //     list = this.props.selectList
+        // }    
         return (
             <div className='wrap-add-task'>
                 <div className='buttons-wrap'>
                     <div>
-                        <Link to = '/'>
+                        <Link to='/'>
                             <Button className="button-task-cancel" color="primary" onClick={() => this.cancelTask()}>Cancel</Button>
                         </Link>
                     </div>
                     <div>
-                        <Button className="button-task-done" color="primary" onClick={() => this.addtask()}>Done</Button>
+                        <Link to='/'>
+                            <Button className="button-task-done" color="primary" onClick={() => this.addtask()}>Done</Button>
+                        </Link>
                     </div>
                 </div>
                 <div className='input-task-wrap'>
@@ -67,7 +91,7 @@ export class OpenTaskComponent extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div className ="wrap-cal-sel">
+                <div className="wrap-cal-sel">
                     <div>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <Grid container justify="space-around">
@@ -86,15 +110,22 @@ export class OpenTaskComponent extends React.Component {
                             </Grid>
                         </MuiPickersUtilsProvider>
                     </div>
-                    <div className='select-wrap'><div>Select list</div></div>
+                    <div className='select-wrap' onClick={this.showLists}>
+                        <div>{this.props.selectList.nameList}</div>
+                        <div  className ='color-select-list'style ={{background: this.props.selectList.background}}></div>
+                    </div>
                 </div>
+                <ShowLists />
             </div>
         )
     }
 }
-const mapStateToProps = function(state) {
-    return{
-      addList: state.homePage.addList
+const mapStateToProps = function (state) {
+    return {
+        addList: state.homePage.addList,
+        showListss: state.homePage.showLists,
+        selectList: state.homePage.selectList,
+        addTaskk: state.homePage.addTask
     }
-  }
-export default connect(mapStateToProps,{addTask})(OpenTaskComponent)
+}
+export default connect(mapStateToProps, { showLists, addTask ,getList, postTask})(OpenTaskComponent)

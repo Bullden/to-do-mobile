@@ -3,6 +3,8 @@ import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer, { RootState } from "./rootReducer";
 import { all } from "redux-saga/effects";
+import {doInitToDo, addList, getList, postTask, putList} from './home/sagas'
+import { signIn } from "./auth/sagas";
 
 export default function configureStore(initialState) {
     const sagaMiddleware = createSagaMiddleware();
@@ -18,7 +20,7 @@ export default function configureStore(initialState) {
     }
   
     sagaMiddleware.run(function*() {
-      yield all();
+      yield all([doInitToDo(),addList(),getList(),postTask(),putList(),signIn()]);
     });
   
     return store;

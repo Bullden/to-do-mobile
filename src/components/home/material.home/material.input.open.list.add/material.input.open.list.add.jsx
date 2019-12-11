@@ -11,11 +11,12 @@ export class InputForAddLists extends React.Component {
     }
     handle = (event) => this.setState({ nameList: event.target.value });
     addList =() => {
-        console.log(this.state.nameList);   
+
         const {addList} = this.props
         addList({
             nameList: this.state.nameList
         }) 
+        
     }
     render() {
         return (

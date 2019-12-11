@@ -29,7 +29,6 @@ export function AddButton(props) {
     openTask({
       openTask: true
     })
-    console.log(props.openTask);  
     setAnchorEl(null);
   }
   const openList = () => {
@@ -38,7 +37,6 @@ export function AddButton(props) {
     openList({
       openList: true,
     })
-    console.log(props.openList);  
     setAnchorEl(null);
     
   }
