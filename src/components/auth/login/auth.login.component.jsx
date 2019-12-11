@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import {signIn} from '../../../redux/auth/actions'
 
 export class LoginComponent extends React.Component {
-    sign ='https://accounts.google.com/o/oauth2/v2/auth?client_id=773877304496-kagp9hp95ffvgd6v0od1p1hq4t9psss3.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/gmail.send&redirect_uri=http://todowebsite.herokuapp.com&access_type=offline'
+    sign ='https://accounts.google.com/o/oauth2/v2/auth?client_id=773877304496-kagp9hp95ffvgd6v0od1p1hq4t9psss3.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/gmail.send&redirect_uri=http://localhost:3000&access_type=offline'
     signInn() {
         window.location = this.sign
         // const {signIn} = this.props
