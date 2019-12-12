@@ -20,7 +20,7 @@ export class HomeComponent extends React.Component {
     }
     render(){
          const signIn = this.props.signIn
-        return( signIn ?
+        return( 
             <div>
                 <p className="p-name">Today</p>
                 <OpenListComponent/>
@@ -28,7 +28,7 @@ export class HomeComponent extends React.Component {
                 <SimpleList />
                 <AddButton />
                 <CardsComponent />
-            </div> : <Redirect to='/sign-in' />
+            </div> 
         )
     }
 }

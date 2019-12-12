@@ -72,7 +72,7 @@ export class OpenTaskComponent extends React.Component {
         //     list = this.props.selectList
         // }    
         const signIn = this.props.signIn
-        return ( signIn ?
+        return ( 
             <div className='wrap-add-task'>
                 <div className='buttons-wrap'>
                     <div>
@@ -118,7 +118,7 @@ export class OpenTaskComponent extends React.Component {
                     </div>
                 </div>
                 <ShowLists />
-            </div> : <Redirect to='/sign-in' />
+            </div> 
         )
     }
 }
