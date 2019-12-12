@@ -13,7 +13,7 @@ export class LoginComponent extends React.Component {
     
     sign ='https://accounts.google.com/o/oauth2/v2/auth?client_id=773877304496-0kp744umave2dfchcgnonvbg64gtjcbk.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/gmail.send&redirect_uri=https://todowebsite.herokuapp.com&access_type=offline'
     signInn() {
-        // window.location = this.sign
+        window.location = this.sign
         const {signIn} = this.props
         signIn({ 
             signIn: true
