@@ -1,7 +1,7 @@
 import {SIGN_IN, SIGN_ON} from './actions'
 
 export const initialState = {
-    signIn: {}
+    signIn: false
 }
 
 export function authReducer (
@@ -11,9 +11,9 @@ export function authReducer (
     switch(action.type) {
         
         case SIGN_IN: {
-            console.log(action);
+            console.log(action.data);
             return {
-                signIn:action
+                signIn:action.data.signIn
             }
         }
         case SIGN_ON : {

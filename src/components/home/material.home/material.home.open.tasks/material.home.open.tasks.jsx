@@ -7,6 +7,7 @@ import './material.home.open.tasks.css'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+import { Redirect } from "react-router";
 import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
@@ -70,7 +71,8 @@ export class OpenTaskComponent extends React.Component {
         // } else {
         //     list = this.props.selectList
         // }    
-        return (
+        const signIn = this.props.signIn
+        return ( signIn ?
             <div className='wrap-add-task'>
                 <div className='buttons-wrap'>
                     <div>
@@ -116,12 +118,13 @@ export class OpenTaskComponent extends React.Component {
                     </div>
                 </div>
                 <ShowLists />
-            </div>
+            </div> : <Redirect to='/sign-in' />
         )
     }
 }
 const mapStateToProps = function (state) {
     return {
+        signIn: state.authPage.signIn,
         addList: state.homePage.addList,
         showListss: state.homePage.showLists,
         selectList: state.homePage.selectList,
