@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { doEditList , putList } from '../../../../redux/home/actions';
+import { doEditList , putList ,addTask, doInitToDo} from '../../../../redux/home/actions';
 import './material.home.edit.list.css'
 import EditIcon from '@material-ui/icons/Edit';
 import { Input } from '@material-ui/core';
@@ -17,7 +17,30 @@ export class EditList extends React.Component {
         nameList:''
     }
     closeEditList = () => {
-        this.setState({ className: 'slideDown' })
+        this.setState({ className: 'slideDown'})
+        console.log(this.props.editList);
+        const arrayTasks = this.state.arrayOfTasks
+        // const {addTask} = this.props
+        
+        const editList = this.props.editList
+
+            const same = arrayTasks.find((item) => {return item._id === editList._id})
+            if(same) {
+                arrayTasks.forEach((item) => {
+                    if(item._id === editList._id) {
+
+                        console.log();
+                        
+
+                        console.log(this.state.arrayOfTasks);
+
+
+                         
+                    }
+                })
+                
+            }
+
         const { doEditList } = this.props
         setTimeout(() => doEditList({ editList: {} }), 1000)
         setTimeout(() => this.setState({ className: 'slideUp' }), 1100)
@@ -42,17 +65,24 @@ export class EditList extends React.Component {
                     background: this.props.editList.list.background
                 },
                 countList: this.props.editList.countList
-           }
-        })      
+           },
+           change: true      
+        })    
+        const {doInitToDo} = this.props
+        doInitToDo({})   
+
     }
     componentDidMount() {
-
+        setTimeout(() => console.log(this.props.addTasks), 1000)
+        
+        setTimeout(() => this.setState({arrayOfTasks: this.props.addTasks}), 1000)
+        
     }
 
     render() {
         let arr = []
         if (this.props.editList.list) {
-            this.props.addTask.forEach((item) => {
+            this.state.arrayOfTasks.forEach((item) => {
                 if (item.list._id === this.props.editList.list._id) {
                     arr.push(item)
                 }
@@ -87,7 +117,7 @@ export class EditList extends React.Component {
 const mapStateToProps = function (state) {
     return {
         editList: state.homePage.editList,
-        addTask: state.homePage.addTask
+        addTasks: state.homePage.addTask
     }
 }
-export default connect(mapStateToProps, { doEditList, putList })(EditList)
+export default connect(mapStateToProps, { doEditList, putList ,addTask, doInitToDo})(EditList)

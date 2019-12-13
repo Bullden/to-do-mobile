@@ -14,7 +14,8 @@ import  EditList  from './material.home/material.home.edit.list/material.home.ed
 export class HomeComponent extends React.Component {
     componentDidMount() {
         const {doInitToDo} = this.props
-        doInitToDo({}) 
+        setTimeout(() => doInitToDo({}) ,1000) 
+        
         console.log(this.props.signIn);
         
     }

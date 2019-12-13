@@ -10,7 +10,8 @@ export const initialState = {
     addTask: [],
     showLists: false,
     selectList: { nameList: 'Select list' },
-    editList:{}
+    editList:{},
+    change:false
 }
 
 
@@ -75,7 +76,7 @@ export function homeReducer(
                 // })
                 
             }
-            console.log(arr);
+            console.log('arr',arr);
      
             
 
@@ -128,8 +129,27 @@ export function homeReducer(
             }
         }
         case PUT_LIST: {
+
+            const arrayTasks = state.addTask
+            const editList = action.data.editList
+
+            const same = arrayTasks.find((item) => {return item._id === editList._id})
+            if(same) {
+                arrayTasks.forEach((item) => {
+                    if(item._id === editList._id) {
+                        item.list.nameList = editList.list.nameList
+                        
+                    }
+                })
+                
+            }
+
+            console.log(arrayTasks);
+            
             return {
                 ...state,
+                change: action.data.change,
+                addTask: arrayTasks,
                 editList: action.data.editList
             }
         }
@@ -203,7 +223,8 @@ export function homeReducer(
             }
         }
         case EDIT_LIST: {
-
+            
+            
             return {
                 ...state,
                 editList: action.data.editList

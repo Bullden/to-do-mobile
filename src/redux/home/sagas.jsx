@@ -57,6 +57,8 @@ export function* putList() {
         const itemForChange = yield select(
             (state) => state.homePage.editList
           );
+          console.log(itemForChange);
+          
         const answerApi = yield call(callApi, "PUT", `tasks/${itemForChange._id}`, action.data.editList)
         console.log(answerApi);
 

@@ -31,14 +31,15 @@ export class OpenTaskComponent extends React.Component {
     }
     addtask = () => {
         console.log(this.state.selectedDate);
-        
-        const { addTask } = this.props
-        addTask({
-            nameTask: this.state.nameTask,
-            date: this.state.selectedDate,
-            list: this.props.selectList,
-            countList: 1
-        })
+        if(this.state.selectedDate && this.state.nameTask && this.props.selectList){
+            const { addTask } = this.props
+            addTask({
+                nameTask: this.state.nameTask,
+                date: this.state.selectedDate,
+                list: this.props.selectList,
+                countList: 1
+            })
+        } else return
         // const arrayToPost = this.props.addTaskk.slice(-1)[0]
         // const {postTask} = this.props
         // postTask({
@@ -60,12 +61,13 @@ export class OpenTaskComponent extends React.Component {
         })
 
     }
+    forceUpdate() {}
     componentDidMount() {
         const {getList} = this.props
         getList({})
     }
     render() {
-
+       
         // if(this.props.selectList === {} || undefined) {
         //     list = 'Select list'
         // } else {
@@ -128,7 +130,8 @@ const mapStateToProps = function (state) {
         addList: state.homePage.addList,
         showListss: state.homePage.showLists,
         selectList: state.homePage.selectList,
-        addTaskk: state.homePage.addTask
+        addTaskk: state.homePage.addTask,
+        change: state.homePage.change
     }
 }
 export default connect(mapStateToProps, { showLists, addTask ,getList, postTask})(OpenTaskComponent)
